@@ -1,0 +1,90 @@
+---------------------------------------------------------------------------------------------------
+Version: 0.3.15
+  Changes:
+    - Multiplayer fixes
+---------------------------------------------------------------------------------------------------
+Version: 0.3.14
+  Changes:
+    - added settings to allow users to more easily exclude specific items
+---------------------------------------------------------------------------------------------------
+Version: 0.3.13
+  Changes:
+    - added more advanced checks for recipes that are not unlockable
+---------------------------------------------------------------------------------------------------
+Version: 0.3.12
+  Changes:
+    - removed a couple items that K2 removes recipes for, but doesn't remove.
+---------------------------------------------------------------------------------------------------
+Version: 0.3.11
+  Changes:
+    - Fixed some issues with rockets not launching.
+    - items from rocket output now reused for input
+---------------------------------------------------------------------------------------------------
+Version: 0.3.10
+  Changes:
+    - added vanilla recipe
+---------------------------------------------------------------------------------------------------
+Version: 0.3.9
+  Changes:
+    - Cleaned up launch code
+    - Added protoduck
+---------------------------------------------------------------------------------------------------
+Version: 0.3.8
+  Changes:
+    - further planner compatability fixes
+---------------------------------------------------------------------------------------------------
+Version: 0.3.7
+  Changes:
+    - add setting to remove basic wood items.
+    - fixed compat with planners
+---------------------------------------------------------------------------------------------------
+Version: 0.3.6
+  Changes:
+    - mod compat
+---------------------------------------------------------------------------------------------------
+Version: 0.3.5
+  Changes:
+    - Skip Editor Extension item
+---------------------------------------------------------------------------------------------------
+Version: 0.3.4
+  Changes:
+    - Optimizations
+---------------------------------------------------------------------------------------------------
+Version: 0.3.3
+  Changes:
+    - Fix for UPS
+    - animation changes
+---------------------------------------------------------------------------------------------------
+Version: 0.3.2
+  Changes:
+    - Angels, seablock, and py compatability
+---------------------------------------------------------------------------------------------------
+Version: 0.3.1
+  Changes:
+    - Added quack
+---------------------------------------------------------------------------------------------------
+Version: 0.3.0
+  Changes:
+    - Added rubber ducky factory, which uses rubber ducky parts, and allows rubber duckies to have more than 255 ingredients.
+---------------------------------------------------------------------------------------------------
+Version: 0.2.1
+  Changes:
+    - bugfix
+---------------------------------------------------------------------------------------------------
+Version: 0.2.0
+  Changes:
+    - Added rubber ducky science pack, attainable from launching a rubber ducky into space
+    - fixed issue with some items not being added.
+    - added raw fish
+---------------------------------------------------------------------------------------------------
+Version: 0.1.3
+  Changes:
+    - Rubber Duckies are placable in water
+---------------------------------------------------------------------------------------------------
+Version: 0.1.2
+  Changes:
+    - added barrels
+---------------------------------------------------------------------------------------------------
+Version: 0.1.1
+  Changes:
+    - Initial release

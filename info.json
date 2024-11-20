@@ -1,0 +1,17 @@
+{
+ "name": "rubber-ducky",
+ "version": "0.3.15",
+ "title": "Rubber Ducky",
+ "contact": "",
+ "author": "Red Wizard",
+ "homepage": "",
+ "description": "A recipe that requires 1 of all craftable items in the game",
+ "dependencies": [
+		"stdlib",
+		"? angelspetrochem",
+		"? SeaBlock",
+		"? pypostprocessing",
+		"? Krastorio2"
+	],
+ "factorio_version": "1.1"
+}
