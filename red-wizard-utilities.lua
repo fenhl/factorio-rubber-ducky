@@ -79,6 +79,7 @@ function debugger(t)
 		end
 		game.print("DEBUGGER " .. t)
 	end
+	log("DEBUGGER " .. t)
 end
 
 

@@ -30,8 +30,8 @@ local function onTick(event)
 						if input_inventory ~= nil then
 
 							--debugger(dump(input_inventory))
-							for name,cnt in pairs(input_inventory) do
-								output_inventory.insert({name=name, count=cnt});
+							for idx, stack in pairs(input_inventory) do
+								output_inventory.insert(stack)
 							end
 						end
 					end
@@ -42,10 +42,10 @@ local function onTick(event)
 						debugger(prototypes.recipe["rubber-ducky-part-" .. machine.rocket_parts + 1].ingredients)
 						local input_inventory = machine.get_inventory(defines.inventory.rocket_silo_input)
 						local output_inventory = machine.get_inventory(defines.inventory.rocket_silo_output)
-						for name,cnt in pairs(output_inventory.get_contents()) do
-							if input_inventory.can_insert({name=name}) then
-								input_inventory.insert({name=name, count=cnt});
-								output_inventory.remove({name=name, count=cnt});
+						for idx, stack in pairs(output_inventory.get_contents()) do
+							if input_inventory.can_insert(stack) then
+								input_inventory.insert(stack)
+								output_inventory.remove(stack)
 							end
 						end
 						

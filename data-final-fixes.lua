@@ -98,7 +98,7 @@ if settings.startup["rubber-ducky-exclude-wood"].value then
 end
 
 
-local max_ingredients_per_part = 250
+local max_ingredients_per_part = 100
 local max_ducky_parts = 10000
 if settings.startup["rubber-ducky-debug-mode"].value then
 	max_ingredients_per_part = 2
