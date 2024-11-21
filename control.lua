@@ -26,7 +26,7 @@ local function onTick(event)
 					local input_inventory = machine.get_inventory(defines.inventory.rocket_silo_input)
 					if input_inventory ~= nil then
 						input_inventory = input_inventory.get_contents()
-						local output_inventory = machine.get_inventory(defines.inventory.rocket_silo_result)
+						local output_inventory = machine.get_inventory(defines.inventory.rocket_silo_output)
 						if input_inventory ~= nil then
 
 							--debugger(dump(input_inventory))
@@ -36,12 +36,12 @@ local function onTick(event)
 						end
 					end
 					--debugger(dump(machine.get_recipe()))
-					if game.recipe_prototypes["rubber-ducky-part-" .. machine.rocket_parts + 1] ~= nil then
+					if prototypes.recipe["rubber-ducky-part-" .. machine.rocket_parts + 1] ~= nil then
 					
 						machine.set_recipe("rubber-ducky-part-" .. machine.rocket_parts + 1 )
-						debugger(game.recipe_prototypes["rubber-ducky-part-" .. machine.rocket_parts + 1].ingredients)
+						debugger(prototypes.recipe["rubber-ducky-part-" .. machine.rocket_parts + 1].ingredients)
 						local input_inventory = machine.get_inventory(defines.inventory.rocket_silo_input)
-						local output_inventory = machine.get_inventory(defines.inventory.rocket_silo_result)
+						local output_inventory = machine.get_inventory(defines.inventory.rocket_silo_output)
 						for name,cnt in pairs(output_inventory.get_contents()) do
 							if input_inventory.can_insert({name=name}) then
 								input_inventory.insert({name=name, count=cnt});
