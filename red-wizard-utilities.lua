@@ -47,9 +47,9 @@ rw_util.ammo_category = function(name)
   return name
 end
 
-if ifmod("stdlib") then
+if ifmod("stdlib2") then
 	if string == nil then
-		string = require('__stdlib__/stdlib/utils/string')
+		string = require('__stdlib2__/stdlib/utils/string')
 	end
 end
 
@@ -88,14 +88,14 @@ end
 if rw_entity == nil then
 	rw_entity = {}
 	rw_entity.data = {}
-	--global.rw_entity_data = {}
+	--storage.rw_entity_data = {}
 end
 
 rw_entity.onPlaceEntity = function (event)
-	if global.rw_entity_data == nil then return end;
+	if storage.rw_entity_data == nil then return end;
 	local entity = event.created_entity or event.entity
 	debugger("rw_entity.onPlaceEntity " .. entity.name)
-	for name,data in pairs(global.rw_entity_data) do
+	for name,data in pairs(storage.rw_entity_data) do
 		if data.names[entity.name] ~= nil then
 			data.entities[entity.unit_number] = entity
 			if data.place_callback ~= nil then
@@ -109,8 +109,8 @@ end
 rw_entity.onRemoveEntity = function (event)
 	--debugger("rw_entity.onRemoveEntity")
 	local entity = event.entity
-	if global.rw_entity_data == nil then return end;
-	for name,data in pairs(global.rw_entity_data) do
+	if storage.rw_entity_data == nil then return end;
+	for name,data in pairs(storage.rw_entity_data) do
 		if data.names[entity.name] ~= nil then
 			if data.entities ~= nil then
 				data.entities[entity.unit_number] = nil
@@ -126,14 +126,14 @@ end
 rw_entity.init = function (event)
 	debugger("rw_entity.init")
 
-	global.rw_entity_data = {}
+	storage.rw_entity_data = {}
 	for name,data in pairs(rw_entity.data) do
-		if global.rw_entity_data[name] == nil then
-			global.rw_entity_data[name] = data
+		if storage.rw_entity_data[name] == nil then
+			storage.rw_entity_data[name] = data
 		end
 	end
-	debugger(global.rw_entity_data)
-	for name,data in pairs(global.rw_entity_data) do
+	debugger(storage.rw_entity_data)
+	for name,data in pairs(storage.rw_entity_data) do
 		
 		data.entities = {}
 		for _,surface in pairs(game.surfaces) do
@@ -240,7 +240,7 @@ rw_tools.deep_entity_clone = function(entity,new_name)
 	if object.recipe ~= nil then
 		orig_recipe_name = object.recipe.name
 		object.recipe.name = new_name
-		object.recipe.result = new_name
+		object.recipe.result = new_name --TODO update for new results format?
 	end
 	
 	for key,tech in pairs(data.raw['technology']) do
@@ -248,7 +248,7 @@ rw_tools.deep_entity_clone = function(entity,new_name)
 			for _,unlock in pairs(tech.effects) do
 				if unlock.type == "unlock-recipe" and unlock.recipe == orig_recipe_name then
 
-					data.raw['technology'][key].effects[new_name] = {type="unlock-recipe",recipe=new_name}
+					table.insert(data.raw['technology'][key].effects, {type="unlock-recipe",recipe=new_name})
 				end
 			end
 		end

@@ -23,13 +23,6 @@ local function is_valid_ingredient(item_name,input)
 	and input.hidden then
 		log("skipping hidden recipe: " .. item_name)
 		return false end
-		
-	if input ~= nil
-	and input['flags'] ~= nil
-	and input['flags']['hidden'] then
-		log("skipping hidden item: " .. item_name)
-		return false end
-	
 	
 	return true
 end
@@ -42,16 +35,9 @@ function add_ingredient_to_ducky(input)
 	local recipe_object
 
 	if(input.type)=="recipe" then
-		if input['result'] ~= nil then
-			item_name = input['result']
-		end
 		if input['results'] ~= nil 
 		and input['results'][1] ~= nil then
 			item_name = input['results'][1].name
-		end
-		if input.normal ~= nil
-		and input.normal['result'] ~= nil then
-			item_name = input.normal['result']
 		end
 		if input.normal ~= nil
 		and input.normal['results'] ~= nil then
@@ -96,5 +82,5 @@ function add_ingredient_to_ducky(input)
 	--log(dump(item_object))
 	log("adding: " .. item_name)
 	--log(dump(input))
-	rubber_ducky_ingredients[item_name] = {item_name,1}
+	rubber_ducky_ingredients[item_name] = {type="item", name=item_name, amount=1}
 end

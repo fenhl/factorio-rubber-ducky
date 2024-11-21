@@ -9,7 +9,7 @@ local proto_ducky =
 	--order = "z[rubber-ducky]-a",
 	stack_size = 1,
 	--place_result = "rubber-ducky",
-	rocket_launch_product = {"rubber-ducky", 1},
+	rocket_launch_product = {type="item", name="rubber-ducky", amount=1},
 }
 	
 data:extend(

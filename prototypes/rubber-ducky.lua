@@ -21,7 +21,7 @@ local rubber_ducky_entity =  {
 				scale = .5
       }
     },
-    autoplace = { influence = 0.01 },
+    autoplace = { probability_expression = 0.01 },
     protected_from_tile_building = false,
   }
 	
@@ -35,7 +35,7 @@ local rubber_ducky_item = {
 			order = "z[rubber-ducky]-a",
 			stack_size = 100,
 			place_result = "rubber-ducky",
-			rocket_launch_product = {"rubber-ducky-science-pack", 1},
+			rocket_launch_product = {type="item", name="rubber-ducky-science-pack", amount=1},
 		}
 local rubber_ducky_recipe =  {
     type = "recipe",
@@ -46,7 +46,7 @@ local rubber_ducky_recipe =  {
     {
     },
     energy_required = 1,
-    result = "rubber-ducky"
+    results = {{type="item", name="rubber-ducky", amount=1}},
   }
 local rubber_ducky_tech = {
     type = "technology",
@@ -72,16 +72,14 @@ local rubber_ducky_tech = {
       time = 60
     },
   }
-rubber_ducky_tech.effects['rubber-ducky'] = 
-{
+table.insert(rubber_ducky_tech.effects, {
 	type = "unlock-recipe",
 	recipe = "rubber-ducky"
-}
-rubber_ducky_tech.effects['rubber-ducky-factory'] = 
-{
+})
+table.insert(rubber_ducky_tech.effects, {
 	type = "unlock-recipe",
 	recipe = "rubber-ducky-factory"
-}
+})
 
 data:extend(
   {

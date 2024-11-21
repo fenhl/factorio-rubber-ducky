@@ -1,7 +1,7 @@
 
 require("red-wizard-utilities")
 require("add_ingredient_to_ducky")
-string = require('__stdlib__/stdlib/utils/string')
+string = require('__stdlib2__/stdlib/utils/string')
 local function find_downstream_items(including)
 	log("looking for items including " .. including)
 	for _,recipe in pairs(data.raw['recipe']) do
@@ -10,12 +10,6 @@ local function find_downstream_items(including)
 				if ingredient[1] == including then
 				
 					log("found downstream recipe: " .. recipe.name .. " requires " .. including)
-					if recipe.result ~= nil then
-						if skip_downstream_items[recipe.result] == nil then
-							skip_downstream_items[recipe.result] = 1
-							find_downstream_items(recipe.result)
-						end
-					end
 					if recipe.results ~= nil 
 					and recipe.results[1] ~= nil 
 					and recipe.results[1].name ~= nil
@@ -77,7 +71,7 @@ if settings.startup["rubber-ducky-vanilla-recipe"].value then
 else
 	rubber_ducky_ingredients = {}
 
-	rubber_ducky_ingredients['raw-fish'] = {'raw-fish',1}
+	rubber_ducky_ingredients['raw-fish'] = {type="item", name="raw-fish", amount=1}
 
 	log("Adding rubber ducky ingredients from recipes")
 	for _,r in pairs(data.raw['recipe']) do
@@ -141,7 +135,7 @@ for _,ingredient in pairs(rubber_ducky_ingredients) do
 	if rubber_ducky_parts[j] == nil then
 		rubber_ducky_parts[j] = {}
 	end
-	rubber_ducky_parts[j][ingredient[1]] = ingredient
+	table.insert(rubber_ducky_parts[j], ingredient)
 end
 
 
@@ -154,10 +148,10 @@ for i,part in pairs(rubber_ducky_parts) do
 	part_recipe.name = "rubber-ducky-part-" .. i
 	part_recipe.ingredients = part
 	part_recipe.hidden = false
-	part_recipe.result= "rubber-ducky-part-" .. i
+	part_recipe.results = {{type="item", name="rubber-ducky-part-" .. i, amount=1}}
 	local part_item = util.table.deepcopy(data.raw['item']['rubber-ducky-part'])
 	part_item.name = "rubber-ducky-part-" .. i
-	part_item.localised_name = {"item-name.rubber-ducky-part",i,count(part_recipe.ingredients)}
+	part_item.localised_name = {"item-name.rubber-ducky-part", tostring(i), tostring(count(part_recipe.ingredients))}
 	--log(dump(part_item))
 	data:extend(
 		{
@@ -165,17 +159,16 @@ for i,part in pairs(rubber_ducky_parts) do
 			part_recipe
 		}
 	)
-	data.raw['recipe']['rubber-ducky']['ingredients'][part_item.name] = {part_item.name,1};
-	data.raw['technology']['rubber-ducky']['effects'][part_recipe.name] =
-	{
+	table.insert(data.raw['recipe']['rubber-ducky']['ingredients'], {type="item", name=part_item.name, amount=1})
+	table.insert(data.raw['technology']['rubber-ducky']['effects'], {
 		type = "unlock-recipe",
 		recipe = part_recipe.name
-	}
+	})
 end
 
-data.raw['item']['rubber-ducky-part'] = nil;
-data.raw['recipe']['rubber-ducky-part'] = nil;
+--data.raw['item']['rubber-ducky-part'] = nil;
+--data.raw['recipe']['rubber-ducky-part'] = nil;
 
 data.raw['rocket-silo']['rubber-ducky-factory'].rocket_parts_required = count(rubber_ducky_parts)
 data.raw['rocket-silo']['rubber-ducky-factory'].rocket_result_inventory_size = count(rubber_ducky_ingredients)+1
-data.raw['item']['rubber-ducky'].localised_name = {"item-name.rubber-ducky",ingredient_count}
+data.raw['item']['rubber-ducky'].localised_name = {"item-name.rubber-ducky", tostring(ingredient_count)}

@@ -10,13 +10,6 @@ local function scale_object(object)
 		object.shift[1] = object.shift[1] * ducky_factory_scale
 		object.shift[2] = object.shift[2] * ducky_factory_scale
 	end
-	if object.hr_version ~= nil then
-		object.hr_version.scale = object.hr_version.scale * ducky_factory_scale
-		if object.hr_version.shift ~= nil then
-			object.hr_version.shift[1] = object.hr_version.shift[1] * ducky_factory_scale
-			object.hr_version.shift[2] = object.hr_version.shift[2] * ducky_factory_scale
-		end
-	end
 end
 
 local function scale_all(entity)
@@ -78,15 +71,13 @@ scale_numbers(rubber_ducky_factory_entity.hole_clipping_box)
 rubber_ducky_factory_entity.allowed_effects = {"consumption","speed", "pollution"}
 
 scale_all(rubber_ducky_factory_entity)
-rubber_ducky_factory_entity.door_back_sprite = rubber_ducky_factory_entity.door_back_sprite.hr_version
 rubber_ducky_factory_entity.door_back_sprite.filename = "__rubber-ducky__/graphics/door-back.png"
-rubber_ducky_factory_entity.door_front_sprite = rubber_ducky_factory_entity.door_front_sprite.hr_version
 rubber_ducky_factory_entity.door_front_sprite.filename = "__rubber-ducky__/graphics/door-front.png"
 rubber_ducky_factory_entity.hole_light_sprite = transparent
 rubber_ducky_factory_entity.rocket_glow_overlay_sprite = transparent
 
 rubber_ducky_factory_entity.alarm_sound = nil
-rubber_ducky_factory_entity.flying_sound.filename = "__rubber-ducky__/quack.ogg"
+rubber_ducky_factory_entity.raise_rocket_sound.filename = "__rubber-ducky__/quack.ogg"
 rubber_ducky_factory_entity.times_to_blink = 3
 rubber_ducky_factory_entity.door_opening_speed = 2 * 1 / (4.25 * 60)
 rubber_ducky_factory_entity.light_blinking_speed = 10 * 1 / (3 * 60)
@@ -105,21 +96,21 @@ local rubber_ducky_factory_recipe =  {
     enabled = false,
     ingredients =
     {
-			{"assembling-machine-3",1},
-			{"rocket-silo",1}
+			{type="item", name="assembling-machine-3", amount=1},
+			{type="item", name="rocket-silo", amount=1}
     },
     energy_required = 1,
-    result = "rubber-ducky-factory"
+    results = {{type="item", name="rubber-ducky-factory", amount=1}},
   }
 
 	
 rocket_ducky = util.table.deepcopy(data.raw['rocket-silo-rocket']['rocket-silo-rocket'])
 rocket_ducky.name = "rocket-ducky"
 scale_all(rocket_ducky)
-rocket_ducky.rocket_sprite = rocket_ducky.rocket_sprite.hr_version
 rocket_ducky.rocket_sprite.filename = "__rubber-ducky__/graphics/rocket-ducky.png"
-rocket_ducky.rocket_shadow_sprite = rocket_ducky.rocket_shadow_sprite.hr_version
 rocket_ducky.rocket_shadow_sprite.filename = "__rubber-ducky__/graphics/rocket-ducky-shadow.png"
+rocket_ducky.rocket_shadow_sprite.width = 672
+rocket_ducky.rocket_shadow_sprite.height = 216
 
 rocket_ducky.rocket_glare_overlay_sprite = transparent
 rocket_ducky.rocket_smoke_top1_animation = transparent

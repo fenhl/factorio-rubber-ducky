@@ -7,14 +7,14 @@ local function setRocketRecipe(machine)
 end
 
 local function onTick(event)
-	if global.initialized == false or global.initialized==nil then
+	if storage.initialized == false or storage.initialized==nil then
 --		rw_entity.track({name = "rubber-ducky-factory"})
 		rw_entity.init()
-		global.initialized = true
+		storage.initialized = true
 	end
-	global.rw_entity_data = global.rw_entity_data or {}
-	if global.rw_entity_data['rubber-ducky-factory'] ~= nil then
-		ducky_factories = global.rw_entity_data['rubber-ducky-factory'].entities
+	storage.rw_entity_data = storage.rw_entity_data or {}
+	if storage.rw_entity_data['rubber-ducky-factory'] ~= nil then
+		ducky_factories = storage.rw_entity_data['rubber-ducky-factory'].entities
 	end
 	if ducky_factories ~= nil then
 		for _,machine in pairs(ducky_factories) do
@@ -55,12 +55,12 @@ local function onTick(event)
 					
 					
 				end
-				global.rocket_factories = global.rocket_factories or {}
+				storage.rocket_factories = storage.rocket_factories or {}
 				--insert the proto ducky when rocket is ready
 				local new_status = machine.rocket_silo_status
 				if machine.rocket_silo_status == defines.rocket_silo_status.rocket_ready
-				and global.rocket_factories[machine.unit_number] ~= nil
-				and machine.rocket_silo_status ~= global.rocket_factories[machine.unit_number].status
+				and storage.rocket_factories[machine.unit_number] ~= nil
+				and machine.rocket_silo_status ~= storage.rocket_factories[machine.unit_number].status
 				then
 					debugger("rocket " .. machine.rocket_silo_status)
 					--machine.launch_rocket()
@@ -70,15 +70,15 @@ local function onTick(event)
 						--output_inventory.resize(0)
 					else
 						--delay to next tick
-						new_status = global.rocket_factories[machine.unit_number].status
+						new_status = storage.rocket_factories[machine.unit_number].status
 					end
 					--local output_inventory = machine.get_inventory(defines.inventory.rocket_silo_result)
 					--output_inventory.insert({name="rubber-ducky"});
 				end
-				if global.rocket_factories[machine.unit_number] == nil then
-					global.rocket_factories[machine.unit_number] = {}
+				if storage.rocket_factories[machine.unit_number] == nil then
+					storage.rocket_factories[machine.unit_number] = {}
 				end
-				global.rocket_factories[machine.unit_number].status = new_status
+				storage.rocket_factories[machine.unit_number].status = new_status
 			end
 		end
 	end
@@ -91,14 +91,14 @@ script.on_configuration_changed(function()
 	rw_entity.init()
 end)
 
---global.initialized = false
+--storage.initialized = false
 rw_entity.track({name = "rubber-ducky-factory"})
 
 -- script.on_event(defines.events.on_player_joined_game,function()
 	-- debugger("Tracking sweatshops")
 	-- rw_entity.track({name = "rubber-ducky-factory"})
 	-- --rw_entity.init()
-	-- global.initialized = true
+	-- storage.initialized = true
 -- end)
 
 
