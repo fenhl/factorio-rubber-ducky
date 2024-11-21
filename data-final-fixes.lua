@@ -169,6 +169,4 @@ end
 --data.raw['item']['rubber-ducky-part'] = nil;
 --data.raw['recipe']['rubber-ducky-part'] = nil;
 
-data.raw['rocket-silo']['rubber-ducky-factory'].rocket_parts_required = count(rubber_ducky_parts)
-data.raw['rocket-silo']['rubber-ducky-factory'].rocket_result_inventory_size = count(rubber_ducky_ingredients)+1
 data.raw['item']['rubber-ducky'].localised_name = {"item-name.rubber-ducky", tostring(ingredient_count)}

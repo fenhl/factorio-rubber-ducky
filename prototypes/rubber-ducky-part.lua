@@ -15,7 +15,7 @@ local rubber_ducky_part_recipe = {
     energy_required = 1,
     enabled = false,
     hidden = true,
-    category = "rocket-building",
+    category = "advanced-crafting",
     ingredients =
     {
 

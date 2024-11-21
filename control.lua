@@ -19,42 +19,6 @@ local function onTick(event)
 	if ducky_factories ~= nil then
 		for _,machine in pairs(ducky_factories) do
 			if machine.valid then
-				local recipe = machine.get_recipe()
-				if recipe == nil
-				or recipe.name ~= "rubber-ducky-part-" .. machine.rocket_parts + 1 then
-					--debugger(recipe.name .. "-> rubber-ducky-part-" .. machine.rocket_parts + 1)
-					local input_inventory = machine.get_inventory(defines.inventory.rocket_silo_input)
-					if input_inventory ~= nil then
-						input_inventory = input_inventory.get_contents()
-						local output_inventory = machine.get_inventory(defines.inventory.rocket_silo_output)
-						if input_inventory ~= nil then
-
-							--debugger(dump(input_inventory))
-							for idx, stack in pairs(input_inventory) do
-								output_inventory.insert(stack)
-							end
-						end
-					end
-					--debugger(dump(machine.get_recipe()))
-					if prototypes.recipe["rubber-ducky-part-" .. machine.rocket_parts + 1] ~= nil then
-					
-						machine.set_recipe("rubber-ducky-part-" .. machine.rocket_parts + 1 )
-						debugger(prototypes.recipe["rubber-ducky-part-" .. machine.rocket_parts + 1].ingredients)
-						local input_inventory = machine.get_inventory(defines.inventory.rocket_silo_input)
-						local output_inventory = machine.get_inventory(defines.inventory.rocket_silo_output)
-						for idx, stack in pairs(output_inventory.get_contents()) do
-							if input_inventory.can_insert(stack) then
-								input_inventory.insert(stack)
-								output_inventory.remove(stack)
-							end
-						end
-						
-					else
-						machine.rocket_parts = 0
-					end
-					
-					
-				end
 				storage.rocket_factories = storage.rocket_factories or {}
 				--insert the proto ducky when rocket is ready
 				local new_status = machine.rocket_silo_status

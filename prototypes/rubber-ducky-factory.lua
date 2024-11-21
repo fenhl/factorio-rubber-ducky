@@ -60,7 +60,8 @@ local rubber_ducky_factory_entity = util.table.deepcopy(data.raw['rocket-silo'][
 rubber_ducky_factory_entity.name = "rubber-ducky-factory"
 rubber_ducky_factory_entity.rocket_entity = "rocket-ducky"
 rubber_ducky_factory_entity.minable = {mining_time = 5, result = "rubber-ducky-factory"}
-rubber_ducky_factory_entity.fixed_recipe = nil
+rubber_ducky_factory_entity.fixed_recipe = "rubber-ducky"
+rubber_ducky_factory_entity.rocket_parts_required = 1
 rubber_ducky_factory_entity.collision_box = {{-1.2, -1.2}, {1.2, 1.2}}
 rubber_ducky_factory_entity.selection_box = {{-1.5, -1.5}, {1.5, 1.5}}
 
