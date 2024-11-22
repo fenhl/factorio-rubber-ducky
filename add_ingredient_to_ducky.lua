@@ -28,45 +28,51 @@ local function is_valid_ingredient(item_name,input)
 end
 
 
-function add_ingredient_to_ducky(input)
+function add_item_to_ducky(input)
 	local item_name
 	local item_object
 	local recipe_name
 	local recipe_object
 
-	if(input.type)=="recipe" then
-		if input['results'] ~= nil 
-		and input['results'][1] ~= nil then
-			item_name = input['results'][1].name
+	item_name = input['name']
+	item_object = input
+
+	add_ingredient_to_ducky(item_name, item_object, recipe_name, recipe_object)
+end
+
+
+function add_recipe_to_ducky(input)
+	if input['results'] ~= nil then
+		for _,result in pairs(input['results']) do
+			local item_name
+			local item_object
+			local recipe_name
+			local recipe_object
+
+			item_name = result['name']
+			if data.raw['item'][item_name] ~= nil then
+				item_object = data.raw['item'][item_name]
+			end
+			if data.raw['module'][item_name] ~= nil then
+				item_object = data.raw['module'][item_name]
+			end
+			recipe_name = input['name']
+			recipe_object = input
+			if data.raw['fluid'][item_name] ~= nil then
+				log("skipping fluid: " .. recipe_name)
+				--log(dump(input))
+			elseif input.enabled ~= nil and input.enabled ~= true and rw_tools.get_recipe_tech(input.name) == nil then
+				log("skipping impossible to unlock recipe : " .. recipe_name)
+				--log(dump(input))
+			else
+				add_ingredient_to_ducky(item_name, item_object, recipe_name, recipe_object)
+			end
 		end
-		if input.normal ~= nil
-		and input.normal['results'] ~= nil then
-			item_name = input.normal['results'][1].name
-		end
-		if data.raw['item'][item_name] ~= nil then
-			item_object = data.raw['item'][item_name]
-		end
-		if data.raw['module'][item_name] ~= nil then
-			item_object = data.raw['module'][item_name]
-		end
-		recipe_name = input['name']
-		recipe_object = input
-		if data.raw['fluid'][item_name] ~= nil then
-			log("skipping fluid: " .. recipe_name)
-			--log(dump(input))
-			return false 
-		end
-		
-		if input.enabled ~= nil and input.enabled ~= true and rw_tools.get_recipe_tech(input.name) == nil then
-			log("skipping impossible to unlock recipe : " .. recipe_name)
-			--log(dump(input))
-			return false 
-		end
-	else
-		item_name = input['name']
-		item_object = input
 	end
-	
+end
+
+
+function add_ingredient_to_ducky(item_name, item_object, recipe_name, recipe_object)
 	if item_name == nil then
 		return false
 	end

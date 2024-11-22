@@ -77,18 +77,43 @@ else
 	for _,r in pairs(data.raw['recipe']) do
 		--log(dump(r))
 		
-		add_ingredient_to_ducky(r)
+		add_recipe_to_ducky(r)
 	end
 	log(" ")
 	log("Adding rubber ducky ingredients from items")
 	for _,r in pairs(data.raw['item']) do
 
 		 if r['subgroup'] == "raw-resource"
+		 or r['subgroup'] == "vulcanus-processes"
+		 or r['subgroup'] == "fulgora-processes"
 		 or r['subgroup'] == "barrel" then
-			add_ingredient_to_ducky(r)
+			add_item_to_ducky(r)
+		end
+
+		if r.burnt_result ~= nil then
+			add_ingredient_to_ducky(r.burnt_result)
+		end
+		if r.spoil_result ~= nil then
+			add_ingredient_to_ducky(r.spoil_result)
 		end
 	end
-	
+	log(" ")
+	log("Adding rubber ducky ingredients from plants")
+	for _,r in pairs(data.raw['plant']) do
+		if r.minable ~= nil and r.minable.results ~= nil then
+			for _,result in pairs(r.minable.results) do
+				add_ingredient_to_ducky(result.name)
+			end
+		end
+	end
+	log(" ")
+	log("Adding rubber ducky ingredients from asteroids")
+	for _,r in pairs(data.raw['asteroid-chunk']) do
+		if r.minable ~= nil and r.minable.result ~= nil then
+			add_ingredient_to_ducky(r.minable.result)
+		end
+	end
+
 end
 
 if settings.startup["rubber-ducky-exclude-wood"].value then
