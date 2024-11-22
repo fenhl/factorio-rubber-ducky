@@ -36,6 +36,9 @@ local rubber_ducky_item = {
 			stack_size = 100,
 			place_result = "rubber-ducky",
 			rocket_launch_product = {type="item", name="rubber-ducky-science-pack", amount=1},
+      inventory_move_sound = "__rubber-ducky__/quack.ogg",
+      pick_sound = "__rubber-ducky__/quack.ogg",
+      drop_sound = "__rubber-ducky__/quack.ogg",
 		}
 local rubber_ducky_recipe =  {
     type = "recipe",
