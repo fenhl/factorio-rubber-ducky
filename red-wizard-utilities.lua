@@ -241,7 +241,7 @@ rw_tools.deep_entity_clone = function(entity,new_name)
 	if object.recipe ~= nil then
 		orig_recipe_name = object.recipe.name
 		object.recipe.name = new_name
-		object.recipe.result = new_name --TODO update for new results format?
+		object.recipe.result = new_name
 	end
 	
 	for key,tech in pairs(data.raw['technology']) do
