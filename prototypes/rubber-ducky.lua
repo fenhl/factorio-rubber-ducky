@@ -40,7 +40,7 @@ local rubber_ducky_item = {
 local rubber_ducky_recipe =  {
     type = "recipe",
     name = "rubber-ducky",
-		category = "rocket-building",
+		category = "advanced-crafting",
     --enabled = true,
     ingredients =
     {
@@ -75,10 +75,6 @@ local rubber_ducky_tech = {
 table.insert(rubber_ducky_tech.effects, {
 	type = "unlock-recipe",
 	recipe = "rubber-ducky"
-})
-table.insert(rubber_ducky_tech.effects, {
-	type = "unlock-recipe",
-	recipe = "rubber-ducky-factory"
 })
 
 data:extend(
