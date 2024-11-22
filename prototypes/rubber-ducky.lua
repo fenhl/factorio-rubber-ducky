@@ -76,6 +76,10 @@ table.insert(rubber_ducky_tech.effects, {
 	type = "unlock-recipe",
 	recipe = "rubber-ducky"
 })
+if data.raw["technology"]["promethium-science-pack"] then
+  rubber_ducky_tech.prerequisites = {"promethium-science-pack"}
+  table.insert(rubber_ducky_tech.unit.ingredients, {"promethium-science-pack", 1})
+end
 
 data:extend(
   {
