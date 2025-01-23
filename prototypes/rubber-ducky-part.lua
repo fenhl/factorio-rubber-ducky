@@ -14,7 +14,6 @@ local rubber_ducky_part_recipe = {
 		--localised_name = {"item-name.rubber-ducky-part"},
     energy_required = 1,
     enabled = false,
-    hidden = true,
     category = "advanced-crafting",
     ingredients =
     {

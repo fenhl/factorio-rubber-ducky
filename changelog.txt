@@ -1,4 +1,8 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.4.3
+  Changes:
+    - Fix rubber ducky recipe being available without the research
+---------------------------------------------------------------------------------------------------
 Version: 0.4.2
   Changes:
     - Fix error when loading caused by mod being renamed

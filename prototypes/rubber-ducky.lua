@@ -44,7 +44,7 @@ local rubber_ducky_recipe =  {
     type = "recipe",
     name = "rubber-ducky",
 		category = "advanced-crafting",
-    --enabled = true,
+    enabled = false,
     ingredients =
     {
     },
