@@ -1,7 +1,7 @@
 local rubber_ducky_entity =  {
     type = "fish",
     name = "rubber-ducky",
-    icon = "__rubber-ducky__/graphics/rubber-ducky.png",
+    icon = "__rubber-ducky-fenhl__/graphics/rubber-ducky.png",
     icon_size = 64, icon_mipmaps = 1,
     flags = {"placeable-neutral", "placeable-player", "not-on-map","placeable-off-grid"},
     minable = {mining_time = 0.4, result = "rubber-ducky", count = 1},
@@ -14,7 +14,7 @@ local rubber_ducky_entity =  {
     pictures =
     {
       {
-        filename = "__rubber-ducky__/graphics/rubber-ducky-entity.png",
+        filename = "__rubber-ducky-fenhl__/graphics/rubber-ducky-entity.png",
         priority = "extra-high",
         width = 74,
         height = 60,
@@ -28,7 +28,7 @@ local rubber_ducky_entity =  {
 local rubber_ducky_item = {
 			type = "item",
 			name = "rubber-ducky",
-			icon = "__rubber-ducky__/graphics/rubber-ducky.png",
+			icon = "__rubber-ducky-fenhl__/graphics/rubber-ducky.png",
 			icon_size = 64, icon_mipmaps = 1,
 
 			subgroup = "rubber-ducky",
@@ -36,9 +36,9 @@ local rubber_ducky_item = {
 			stack_size = 100,
 			place_result = "rubber-ducky",
 			rocket_launch_product = {type="item", name="rubber-ducky-science-pack", amount=1},
-      inventory_move_sound = "__rubber-ducky__/quack.ogg",
-      pick_sound = "__rubber-ducky__/quack.ogg",
-      drop_sound = "__rubber-ducky__/quack.ogg",
+      inventory_move_sound = "__rubber-ducky-fenhl__/quack.ogg",
+      pick_sound = "__rubber-ducky-fenhl__/quack.ogg",
+      drop_sound = "__rubber-ducky-fenhl__/quack.ogg",
 		}
 local rubber_ducky_recipe =  {
     type = "recipe",
@@ -55,7 +55,7 @@ local rubber_ducky_tech = {
     type = "technology",
     name = "rubber-ducky",
     icon_size = 64, icon_mipmaps = 1,
-    icon = "__rubber-ducky__/graphics/rubber-ducky.png",
+    icon = "__rubber-ducky-fenhl__/graphics/rubber-ducky.png",
     effects =
     {
     },

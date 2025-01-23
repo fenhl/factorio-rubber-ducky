@@ -1,4 +1,18 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.4.2
+  Changes:
+    - Fix error when loading caused by mod being renamed
+---------------------------------------------------------------------------------------------------
+Version: 0.4.1
+  Changes:
+    - No changes, republished due to an error while publishing
+---------------------------------------------------------------------------------------------------
+Version: 0.4.0
+  Changes:
+    - Compatibility with Factorio 2.0 and Space Age
+    - Removed Rubber Ducky Sweatshop as I was unable to make it work with 2.0
+    - The rubber ducky quacks when picked up or placed into an inventory
+---------------------------------------------------------------------------------------------------
 Version: 0.3.15
   Changes:
     - Multiplayer fixes

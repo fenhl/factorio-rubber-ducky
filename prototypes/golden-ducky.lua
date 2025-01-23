@@ -19,7 +19,7 @@ local golden_ducky_tech = {
     type = "technology",
     name = "golden-ducky",
     icon_size = 64, icon_mipmaps = 1,
-    icon = "__rubber-ducky__/graphics/rubber-ducky.png",
+    icon = "__rubber-ducky-fenhl__/graphics/rubber-ducky.png",
     effects =
     {
       {

@@ -2,7 +2,7 @@ local rubber_ducky_part_item = {
 			type = "item",
 			name = "rubber-ducky-part",
 			localised_name = {"item-name.rubber-ducky-part"},
-			icon = "__rubber-ducky__/graphics/rubber-ducky-part.png",
+			icon = "__rubber-ducky-fenhl__/graphics/rubber-ducky-part.png",
 			icon_size = 64, icon_mipmaps = 1,
 			subgroup = "rubber-ducky",
 			order = "z[rubber-ducky]-b",

@@ -1,7 +1,7 @@
 local rubber_ducky_science_item = {
 			type = "tool",
 			name = "rubber-ducky-science-pack",
-			icon = "__rubber-ducky__/graphics/rubber-ducky-science-pack.png",
+			icon = "__rubber-ducky-fenhl__/graphics/rubber-ducky-science-pack.png",
 			icon_size = 64, icon_mipmaps = 1,
 			subgroup = "raw-resource",
 			order = "z[rubber-ducky]-b",
