@@ -1,10 +1,10 @@
 {
- "name": "rubber-ducky",
+ "name": "rubber-ducky-fenhl",
  "version": "0.4.0",
- "title": "Rubber Ducky",
+ "title": "Rubber Ducky (Fenhl's fork)",
  "contact": "",
- "author": "Red Wizard",
- "homepage": "",
+ "author": "Red Wizard, Fenhl",
+ "homepage": "https://github.com/fenhl/factorio-rubber-ducky",
  "description": "A recipe that requires 1 of all craftable items in the game",
  "dependencies": [
 		"stdlib2",
