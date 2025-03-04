@@ -191,7 +191,7 @@ for i,part in pairs(rubber_ducky_parts) do
 	})
 end
 
---data.raw['item']['rubber-ducky-part'] = nil;
---data.raw['recipe']['rubber-ducky-part'] = nil;
+data.raw['item']['rubber-ducky-part'] = nil;
+data.raw['recipe']['rubber-ducky-part'] = nil;
 
 data.raw['item']['rubber-ducky'].localised_name = {"item-name.rubber-ducky", tostring(ingredient_count)}
