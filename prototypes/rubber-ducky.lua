@@ -34,6 +34,7 @@ local rubber_ducky_item = {
 			subgroup = "rubber-ducky",
 			order = "z[rubber-ducky]-a",
 			stack_size = 100,
+      weight = 1000000,
 			place_result = "rubber-ducky",
 			rocket_launch_product = {type="item", name="rubber-ducky-science-pack", amount=1},
       inventory_move_sound = "__rubber-ducky-fenhl__/quack.ogg",

@@ -6,7 +6,8 @@ local rubber_ducky_part_item = {
 			icon_size = 64, icon_mipmaps = 1,
 			subgroup = "rubber-ducky",
 			order = "z[rubber-ducky]-b",
-			stack_size = 5
+			stack_size = 5,
+			weight = 1000000,
     }
 local rubber_ducky_part_recipe = {
     type = "recipe",
