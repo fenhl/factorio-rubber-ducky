@@ -1,4 +1,8 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.4.5
+  Changes:
+    - Remove rubber ducky part template recycling recipe
+---------------------------------------------------------------------------------------------------
 Version: 0.4.4
   Changes:
     - Remove rubber ducky part template item and recipe
