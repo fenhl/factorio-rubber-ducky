@@ -1,6 +1,7 @@
 local rubber_ducky_entity =  {
     type = "fish",
     name = "rubber-ducky",
+    localised_name = {"item-name.rubber-ducky-base"},
     icon = "__rubber-ducky-fenhl__/graphics/rubber-ducky.png",
     icon_size = 64, icon_mipmaps = 1,
     flags = {"placeable-neutral", "placeable-player", "not-on-map","placeable-off-grid"},
@@ -28,6 +29,7 @@ local rubber_ducky_entity =  {
 local rubber_ducky_item = {
 			type = "item",
 			name = "rubber-ducky",
+      localised_name = {"item-name.rubber-ducky-base"},
 			icon = "__rubber-ducky-fenhl__/graphics/rubber-ducky.png",
 			icon_size = 64, icon_mipmaps = 1,
 
@@ -44,6 +46,7 @@ local rubber_ducky_item = {
 local rubber_ducky_recipe =  {
     type = "recipe",
     name = "rubber-ducky",
+    localised_name = {"item-name.rubber-ducky-base"},
 		category = "advanced-crafting",
     enabled = false,
     ingredients =

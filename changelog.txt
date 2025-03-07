@@ -1,4 +1,8 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.4.7
+  Changes:
+    - Fix rubber ducky recycling recipe name
+---------------------------------------------------------------------------------------------------
 Version: 0.4.6
   Changes:
     - Configure duck and duck part weight to allow one per rocket
