@@ -3,13 +3,13 @@ require("red-wizard-utilities")
 require("add_ingredient_to_ducky")
 string = require('__stdlib2__/stdlib/utils/string')
 local function find_downstream_items(including)
-	log("looking for items including " .. including)
+	debugger("looking for items including " .. including)
 	for _,recipe in pairs(data.raw['recipe']) do
 		if recipe.ingredients ~= nil then
 			for _,ingredient in pairs(recipe.ingredients) do
 				if ingredient[1] == including then
 				
-					log("found downstream recipe: " .. recipe.name .. " requires " .. including)
+					debugger("found downstream recipe: " .. recipe.name .. " requires " .. including)
 					if recipe.results ~= nil 
 					and recipe.results[1] ~= nil 
 					and recipe.results[1].name ~= nil
@@ -34,7 +34,7 @@ skip_ingredient_name['electric-energy-interface'] = 1
 
 
 local custom_ingredient_names = string.split(settings.startup["rubber-ducky-skip-items"].value," ");
-log(dump(custom_ingredient_names))
+debugger(dump(custom_ingredient_names))
 for _,i in pairs(custom_ingredient_names) do
 	skip_ingredient_name[i] = 1
 end
@@ -73,14 +73,14 @@ else
 
 	rubber_ducky_ingredients['raw-fish'] = {type="item", name="raw-fish", amount=1}
 
-	log("Adding rubber ducky ingredients from recipes")
+	debugger("Adding rubber ducky ingredients from recipes")
 	for _,r in pairs(data.raw['recipe']) do
-		--log(dump(r))
+		--debugger(dump(r))
 		
 		add_recipe_to_ducky(r)
 	end
-	log(" ")
-	log("Adding rubber ducky ingredients from items")
+	debugger(" ")
+	debugger("Adding rubber ducky ingredients from items")
 	for _,r in pairs(data.raw['item']) do
 
 		 if r['subgroup'] == "raw-resource"
@@ -97,8 +97,8 @@ else
 			add_ingredient_to_ducky(r.spoil_result)
 		end
 	end
-	log(" ")
-	log("Adding rubber ducky ingredients from plants")
+	debugger(" ")
+	debugger("Adding rubber ducky ingredients from plants")
 	for _,r in pairs(data.raw['plant']) do
 		if r.minable ~= nil and r.minable.results ~= nil then
 			for _,result in pairs(r.minable.results) do
@@ -106,8 +106,8 @@ else
 			end
 		end
 	end
-	log(" ")
-	log("Adding rubber ducky ingredients from asteroids")
+	debugger(" ")
+	debugger("Adding rubber ducky ingredients from asteroids")
 	for _,r in pairs(data.raw['asteroid-chunk']) do
 		if r.minable ~= nil and r.minable.result ~= nil then
 			add_ingredient_to_ducky(r.minable.result)
@@ -141,7 +141,7 @@ for _,ingredient in pairs(rubber_ducky_ingredients) do
 	--datafile = datafile .. "rubber_ducky_ingredients['"..ingredient[1].."'] = {'".. ingredient[1] .. "',1}\n"
 	--datafile = datafile .. ", " .. ingredient[1]
 end
---log(datafile)
+--debugger(datafile)
 
 
 local ingredient_count = 0
@@ -177,7 +177,7 @@ for i,part in pairs(rubber_ducky_parts) do
 	local part_item = util.table.deepcopy(data.raw['item']['rubber-ducky-part'])
 	part_item.name = "rubber-ducky-part-" .. i
 	part_item.localised_name = {"item-name.rubber-ducky-part", tostring(i), tostring(count(part_recipe.ingredients))}
-	--log(dump(part_item))
+	--debugger(dump(part_item))
 	data:extend(
 		{
 			part_item,

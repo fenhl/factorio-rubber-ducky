@@ -296,10 +296,10 @@ end
 
 rw_tools.extend_or_update = function(objs)
 	for _,obj in pairs(objs) do
-		log("checking for collisions " .. obj.type .. " " .. obj.name);
+		debugger("checking for collisions " .. obj.type .. " " .. obj.name);
 		local existing = nil
 		if data.raw[obj.type][obj.name] ~= nil then
-			log("collision detected with " .. obj.name .. "(" .. obj.type .. ")")
+			debugger("collision detected with " .. obj.name .. "(" .. obj.type .. ")")
 			data.raw[obj.type][obj.name] = obj
 		else
 			data:extend({obj})

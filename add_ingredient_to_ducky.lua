@@ -1,27 +1,27 @@
 local function is_valid_ingredient(item_name,input)
-	log("attempting to check "..item_name);
+	debugger("attempting to check "..item_name);
 	if rubber_ducky_ingredients[item_name] then
-		log("skipping already added: " .. item_name)
+		debugger("skipping already added: " .. item_name)
 		return false end
 		
 	for n,_ in pairs(skip_ingredient_prefix) do
 		if string.starts(item_name,n) then
-			log("skipping prefix match " .. n .. ": " .. item_name)
+			debugger("skipping prefix match " .. n .. ": " .. item_name)
 			return false end
 	end
 	
 		
 	if skip_ingredient_name[item_name] then
-		log("skipping name match: " .. item_name)
+		debugger("skipping name match: " .. item_name)
 		return false end
 		
 	if skip_downstream_items[item_name] then
-		log("skipping downstream item: " .. item_name)
+		debugger("skipping downstream item: " .. item_name)
 		return false end
 		
 	if input ~= nil
 	and input.hidden then
-		log("skipping hidden recipe: " .. item_name)
+		debugger("skipping hidden recipe: " .. item_name)
 		return false end
 	
 	return true
@@ -59,11 +59,11 @@ function add_recipe_to_ducky(input)
 			recipe_name = input['name']
 			recipe_object = input
 			if data.raw['fluid'][item_name] ~= nil then
-				log("skipping fluid: " .. recipe_name)
-				--log(dump(input))
+				debugger("skipping fluid: " .. recipe_name)
+				--debugger(dump(input))
 			elseif input.enabled ~= nil and input.enabled ~= true and rw_tools.get_recipe_tech(input.name) == nil then
-				log("skipping impossible to unlock recipe : " .. recipe_name)
-				--log(dump(input))
+				debugger("skipping impossible to unlock recipe : " .. recipe_name)
+				--debugger(dump(input))
 			else
 				add_ingredient_to_ducky(item_name, item_object, recipe_name, recipe_object)
 			end
@@ -85,8 +85,8 @@ function add_ingredient_to_ducky(item_name, item_object, recipe_name, recipe_obj
 	and not is_valid_ingredient(recipe_name,recipe_object) then
 		return false
 	end
-	--log(dump(item_object))
-	log("adding: " .. item_name)
-	--log(dump(input))
+	--debugger(dump(item_object))
+	debugger("adding: " .. item_name)
+	--debugger(dump(input))
 	rubber_ducky_ingredients[item_name] = {type="item", name=item_name, amount=1}
 end
