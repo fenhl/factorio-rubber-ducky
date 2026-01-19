@@ -168,15 +168,27 @@ end
 -- rubber_ducky_parts[1]['lubricant'] = {'lubricant',1}
 
 for i,part in pairs(rubber_ducky_parts) do
-
-	local part_recipe = util.table.deepcopy(data.raw['recipe']['rubber-ducky-part'])
-	part_recipe.name = "rubber-ducky-part-" .. i
-	part_recipe.ingredients = part
-	part_recipe.hidden = false
-	part_recipe.results = {{type="item", name="rubber-ducky-part-" .. i, amount=1}}
-	local part_item = util.table.deepcopy(data.raw['item']['rubber-ducky-part'])
-	part_item.name = "rubber-ducky-part-" .. i
-	part_item.localised_name = {"item-name.rubber-ducky-part", tostring(i), tostring(count(part_recipe.ingredients))}
+	local part_recipe = {
+		type = "recipe",
+		name = "rubber-ducky-part-" .. i,
+		energy_required = 1,
+		enabled = false,
+		category = "advanced-crafting",
+		ingredients = part,
+		results = {{type="item", name="rubber-ducky-part-" .. i, amount=1}},
+		hidden = false,
+	}
+	local part_item = {
+		type = "item",
+		name = "rubber-ducky-part-" .. i,
+		localised_name = {"item-name.rubber-ducky-part", tostring(i), tostring(count(part_recipe.ingredients))},
+		icon = "__rubber-ducky-fenhl__/graphics/rubber-ducky-part.png",
+		icon_size = 64, icon_mipmaps = 1,
+		subgroup = "rubber-ducky",
+		order = "z[rubber-ducky]-b",
+		stack_size = 5,
+		weight = 1000000,
+	}
 	--debugger(dump(part_item))
 	data:extend(
 		{

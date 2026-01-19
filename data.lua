@@ -9,4 +9,3 @@ data:extend(
 require("prototypes.rubber-ducky")
 require("prototypes.rubber-ducky-science")
 require("prototypes.golden-ducky")
-require("prototypes.rubber-ducky-part")
