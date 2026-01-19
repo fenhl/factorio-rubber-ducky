@@ -1,4 +1,8 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.4.8
+  Changes:
+    - Don't create and then delete a template item and recipe, fixing issues with mods like Krastorio 2 that expect them to still exist
+---------------------------------------------------------------------------------------------------
 Version: 0.4.7
   Changes:
     - Fix rubber ducky recycling recipe name
