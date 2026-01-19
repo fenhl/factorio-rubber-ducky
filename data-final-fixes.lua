@@ -171,6 +171,7 @@ for i,part in pairs(rubber_ducky_parts) do
 	local part_recipe = {
 		type = "recipe",
 		name = "rubber-ducky-part-" .. i,
+		localised_name = {"item-name.rubber-ducky", tostring(ingredient_count)},
 		energy_required = 1,
 		enabled = false,
 		category = "advanced-crafting",
@@ -202,9 +203,3 @@ for i,part in pairs(rubber_ducky_parts) do
 		recipe = part_recipe.name
 	})
 end
-
-data.raw['item']['rubber-ducky-part'] = nil;
-data.raw['recipe']['rubber-ducky-part'] = nil;
-data.raw['recipe']['rubber-ducky-part-recycling'] = nil;
-
-data.raw['item']['rubber-ducky'].localised_name = {"item-name.rubber-ducky", tostring(ingredient_count)}
