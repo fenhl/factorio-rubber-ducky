@@ -1,4 +1,8 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.4.9
+  Changes:
+    - Fix compatibility with base game without Space Age
+---------------------------------------------------------------------------------------------------
 Version: 0.4.8
   Changes:
     - Don't create and then delete a template item and recipe, fixing issues with mods like Krastorio 2 that expect them to still exist

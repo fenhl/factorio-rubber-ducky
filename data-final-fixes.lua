@@ -4,19 +4,21 @@ require("add_ingredient_to_ducky")
 string = require('__stdlib2__/stdlib/utils/string')
 local function find_downstream_items(including)
 	debugger("looking for items including " .. including)
-	for _,recipe in pairs(data.raw['recipe']) do
-		if recipe.ingredients ~= nil then
-			for _,ingredient in pairs(recipe.ingredients) do
-				if ingredient[1] == including then
-				
-					debugger("found downstream recipe: " .. recipe.name .. " requires " .. including)
-					if recipe.results ~= nil 
-					and recipe.results[1] ~= nil 
-					and recipe.results[1].name ~= nil
-					then
-						if skip_downstream_items[recipe.results[1].name] == nil then
-							skip_downstream_items[recipe.results[1].name] = 1
-							find_downstream_items(recipe.results[1].name)
+	if data.raw['recipe'] ~= nil then
+		for _,recipe in pairs(data.raw['recipe']) do
+			if recipe.ingredients ~= nil then
+				for _,ingredient in pairs(recipe.ingredients) do
+					if ingredient[1] == including then
+					
+						debugger("found downstream recipe: " .. recipe.name .. " requires " .. including)
+						if recipe.results ~= nil 
+						and recipe.results[1] ~= nil 
+						and recipe.results[1].name ~= nil
+						then
+							if skip_downstream_items[recipe.results[1].name] == nil then
+								skip_downstream_items[recipe.results[1].name] = 1
+								find_downstream_items(recipe.results[1].name)
+							end
 						end
 					end
 				end
@@ -73,44 +75,52 @@ else
 
 	rubber_ducky_ingredients['raw-fish'] = {type="item", name="raw-fish", amount=1}
 
-	debugger("Adding rubber ducky ingredients from recipes")
-	for _,r in pairs(data.raw['recipe']) do
-		--debugger(dump(r))
-		
-		add_recipe_to_ducky(r)
-	end
-	debugger(" ")
-	debugger("Adding rubber ducky ingredients from items")
-	for _,r in pairs(data.raw['item']) do
-
-		 if r['subgroup'] == "raw-resource"
-		 or r['subgroup'] == "vulcanus-processes"
-		 or r['subgroup'] == "fulgora-processes"
-		 or r['subgroup'] == "barrel" then
-			add_item_to_ducky(r)
-		end
-
-		if r.burnt_result ~= nil then
-			add_ingredient_to_ducky(r.burnt_result)
-		end
-		if r.spoil_result ~= nil then
-			add_ingredient_to_ducky(r.spoil_result)
+	if data.raw['recipe'] ~= nil then
+		debugger("Adding rubber ducky ingredients from recipes")
+		for _,r in pairs(data.raw['recipe']) do
+			--debugger(dump(r))
+			
+			add_recipe_to_ducky(r)
 		end
 	end
-	debugger(" ")
-	debugger("Adding rubber ducky ingredients from plants")
-	for _,r in pairs(data.raw['plant']) do
-		if r.minable ~= nil and r.minable.results ~= nil then
-			for _,result in pairs(r.minable.results) do
-				add_ingredient_to_ducky(result.name)
+	if data.raw['item'] ~= nil then
+		debugger(" ")
+		debugger("Adding rubber ducky ingredients from items")
+		for _,r in pairs(data.raw['item']) do
+
+			if r['subgroup'] == "raw-resource"
+			or r['subgroup'] == "vulcanus-processes"
+			or r['subgroup'] == "fulgora-processes"
+			or r['subgroup'] == "barrel" then
+				add_item_to_ducky(r)
+			end
+
+			if r.burnt_result ~= nil then
+				add_ingredient_to_ducky(r.burnt_result)
+			end
+			if r.spoil_result ~= nil then
+				add_ingredient_to_ducky(r.spoil_result)
 			end
 		end
 	end
-	debugger(" ")
-	debugger("Adding rubber ducky ingredients from asteroids")
-	for _,r in pairs(data.raw['asteroid-chunk']) do
-		if r.minable ~= nil and r.minable.result ~= nil then
-			add_ingredient_to_ducky(r.minable.result)
+	if data.raw['plant'] ~= nil then
+		debugger(" ")
+		debugger("Adding rubber ducky ingredients from plants")
+		for _,r in pairs(data.raw['plant']) do
+			if r.minable ~= nil and r.minable.results ~= nil then
+				for _,result in pairs(r.minable.results) do
+					add_ingredient_to_ducky(result.name)
+				end
+			end
+		end
+	end
+	if data.raw['asteroid-chunk'] ~= nil then
+		debugger(" ")
+		debugger("Adding rubber ducky ingredients from asteroids")
+		for _,r in pairs(data.raw['asteroid-chunk']) do
+			if r.minable ~= nil and r.minable.result ~= nil then
+				add_ingredient_to_ducky(r.minable.result)
+			end
 		end
 	end
 
