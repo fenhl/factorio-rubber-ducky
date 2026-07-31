@@ -1,7 +1,7 @@
 
 require("red-wizard-utilities")
 require("add_ingredient_to_ducky")
-string = require('__stdlib2__/stdlib/utils/string')
+string = require('string')
 local function find_downstream_items(including)
 	debugger("looking for items including " .. including)
 	if data.raw['recipe'] ~= nil then
@@ -184,7 +184,7 @@ for i,part in pairs(rubber_ducky_parts) do
 		localised_name = {"item-name.rubber-ducky", tostring(ingredient_count)},
 		energy_required = 1,
 		enabled = false,
-		category = "advanced-crafting",
+		categories = {"advanced-crafting"},
 		ingredients = part,
 		results = {{type="item", name="rubber-ducky-part-" .. i, amount=1}},
 		hidden = false,

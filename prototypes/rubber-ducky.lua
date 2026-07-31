@@ -47,7 +47,7 @@ local rubber_ducky_recipe =  {
     type = "recipe",
     name = "rubber-ducky",
     localised_name = {"item-name.rubber-ducky-base"},
-		category = "advanced-crafting",
+		categories = {"advanced-crafting"},
     enabled = false,
     ingredients =
     {

@@ -49,7 +49,7 @@ end
 
 if ifmod("stdlib2") then
 	if string == nil then
-		string = require('__stdlib2__/stdlib/utils/string')
+		string = require('string')
 	end
 end
 

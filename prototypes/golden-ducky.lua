@@ -6,7 +6,7 @@ golden_ducky_item.place_result = nil
 local golden_ducky_recipe = util.table.deepcopy(data.raw['recipe']['rubber-ducky'])
 golden_ducky_recipe.name = "golden-ducky"
 golden_ducky_recipe.results[1].name = "golden-ducky"
-golden_ducky_recipe.category = "crafting-with-fluid"
+golden_ducky_recipe.categories = {"crafting-with-fluid"}
 golden_ducky_recipe.enabled = false
 
 golden_ducky_recipe.ingredients =
