@@ -1,17 +1,17 @@
 {
- "name": "rubber-ducky-fenhl",
- "version": "0.4.10",
- "title": "Rubber Ducky (Fenhl's fork)",
- "contact": "",
- "author": "Red Wizard, Fenhl",
- "homepage": "https://github.com/fenhl/factorio-rubber-ducky",
- "description": "A recipe that requires 1 of all craftable items in the game",
- "dependencies": [
-		"? angelspetrochem",
-		"? SeaBlock",
-		"? pypostprocessing",
-		"? Krastorio2",
-		"? space-age"
-	],
- "factorio_version": "2.1"
+    "name": "rubber-ducky-fenhl",
+    "version": "0.4.11",
+    "title": "Rubber Ducky (Fenhl's fork)",
+    "contact": "",
+    "author": "Red Wizard, Fenhl",
+    "homepage": "https://github.com/fenhl/factorio-rubber-ducky",
+    "description": "A recipe that requires 1 of all craftable items in the game",
+    "dependencies": [
+        "? angelspetrochem",
+        "? SeaBlock",
+        "? pypostprocessing",
+        "? Krastorio2",
+        "? space-age"
+    ],
+    "factorio_version": "2.1"
 }

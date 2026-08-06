@@ -181,7 +181,7 @@ for i,part in pairs(rubber_ducky_parts) do
 	local part_recipe = {
 		type = "recipe",
 		name = "rubber-ducky-part-" .. i,
-		localised_name = {"item-name.rubber-ducky", tostring(ingredient_count)},
+		localised_name = {"item-name.rubber-ducky-part", tostring(i), tostring(count(part))},
 		energy_required = 1,
 		enabled = false,
 		categories = {"advanced-crafting"},
